@@ -1,0 +1,45 @@
+@font-face{
+    font-family : finalnew;
+    src : url("../fonts/Finalnew.ttf");
+}
+
+@font-face{
+    font-family : Mkxtitle;
+    src : url("../fonts/mkx.ttf");
+}
+
+/*@font-face{
+    font-family : airways;
+    src : url("../fonts/airways.ttf");
+}
+*/
+th{
+    color: #0e0e0e;
+}
+
+/*.icon-minus,.icon-plus, .icon-pencil{
+    width:80px;
+    height: 80px;
+}*/
+
+.ajoutmatiere{
+    float:left;
+    margin: 30px;
+}
+#body{
+    margin: auto;
+    max-width: 50%;
+}
+h1,h2{
+    alignent: center;
+}
+
+label{
+    font-weight: bold;
+}
+
+
+hr{
+    background-color:blue;
+    height:2px;
+}
