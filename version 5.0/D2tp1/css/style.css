@@ -25,21 +25,28 @@ th{
 .ajoutmatiere{
     float:left;
     margin: 30px;
+    cursor: pointer;
 }
 #body{
     margin: auto;
     max-width: 50%;
 }
-h1,h2{
+/*h1,h2{
     alignent: center;
-}
+}*/
 
 label{
     font-weight: bold;
 }
 
 
-hr{
+/*hr{
     background-color:blue;
     height:2px;
+}*/
+#title {
+    border-bottom: 2px solid blue;
+}
+.Edit, .Suppression {
+    cursor: pointer;
 }

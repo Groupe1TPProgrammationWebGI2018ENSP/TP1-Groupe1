@@ -1,13 +1,38 @@
-hr{
-    background-color:blue;
-    height:2px;
+body {
+    margin: 2em 20% 0 20%;
+    position: absolute;
+    top: auto;
+    left: auto;
+    right: auto;
+    bottom: auto;
+    border: 1px solid black;
 }
 
-#bloc1{
+h1#title{
+/*    background-color:blue;
+    height:2px;*/
+border-bottom: 2px solid blue;
+}
+
+/*#bloc1{
     background-color: black;
     color: white;
     width: 50%;
     position:relative;
     left:25%;
+}*/
+div#bloc1 {
+    margin-left: 5em;
+    margin-right: 5em;
+    margin-bottom: 2em;
+    padding: 1em 5em 3em 1em;
+    position: relative;
+    top: auto;
+    left: auto;
+    background-color: black;
+    color: white;
+}
+div#result {
+    margin-top: 0.8em;
 }
 
