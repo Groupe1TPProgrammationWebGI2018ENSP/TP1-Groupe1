@@ -1,0 +1,23 @@
+th{
+    font-family: finalnew;
+}
+td{
+    font-family: airways;
+}
+h1,h4{
+    font-family: finalnew;
+}
+label{
+    font-family: Mkxtitle;
+}
+input{
+    font-family: airways;
+}
+.action{
+    width:100px;
+}
+form{
+    background-color: #F7F7F7;
+    border-radius: 2px;
+    box-shadow: 2px 2px 2px rgba(0, 0.5, 0.5, 0.3);
+}
