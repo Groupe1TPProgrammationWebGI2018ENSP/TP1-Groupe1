@@ -16,14 +16,14 @@ var t = (document.getElementsByClassName("Suppression"));
 t = (document.getElementsByClassName("Edit"));
 for(var i = 0; i< t.length;i++){
     t[i].addEventListener("click",function(e){
-        modifier(e.target);
+        modifie(e.target);
         e.preventDefault;
     });
 }
 
 t = (document.getElementById("Add"));
     t.addEventListener("click",function(e){
-        ajouter(e.target);
+        ajoute(e.target);
         e.preventDefault;
     });
 
@@ -38,7 +38,6 @@ function supprime(s){
 
 
 }
-/*
 
 function modifie(s){
     if(window.form == 0 ){
@@ -73,117 +72,87 @@ function ajoute(s){
         refresh(0);
     }
 
-}*/
-function modifier(s) {
-    if(window.form == 0 ) {
-        window.form = 1;
-        window.mod = s.parentElement.parentElement.parentElement;
-        var matiere;
-        var champNote;
+}
+function modifier() {
+    var formulaire = document.getElementsByTagName("input");
+    var champNote = formulaire[1].value;
+    var matiere = formulaire[0].value;
+   // alert(""+window.mod);
+    if((parseFloat(champNote)).toString() == champNote && champNote != "") {
+        note = parseFloat(champNote);
+        var tdmatiere = window.mod.getElementsByClassName("matiere")[0];
+        var tdnote = window.mod.getElementsByClassName("note")[0];
 
-        do{
-            matiere = prompt("Veuillez entrer la matière. ");
-        }while ( matiere == "" );
-        if(matiere != null){
-            do{
-                champNote = prompt("Veuillez entrer la note. ");
-            }while(parseFloat(champNote).toString() != champNote || champNote=="" );
-            if(parseFloat(champNote) != null){
-                note = parseFloat(champNote);
-                var tdmatiere = window.mod.getElementsByClassName("matiere")[0];
-                var tdnote = window.mod.getElementsByClassName("note")[0];
+        tdmatiere.innerHTML = matiere;
 
-                tdmatiere.innerHTML = matiere;
+        tdnote.innerHTML = note;
 
-                tdnote.innerHTML = note;
-
-                actualiseMoyenne();
-                addEvent();
-
-                window.form = 0;
-            }else {
-                window.form = 0;
-
-            }
-        }else {
-            window.form = 0;
-        }
-
-
-
+        actualiseMoyenne();
+        addEvent();
+        var add = document.getElementById("modification");
+        add.remove();
+        window.form = 0;
+    }else {
+        alert("Veuillez entrer une note correcte!!");
+        formulaire[1].value = "";
     }
 
 
 }
-function ajouter(s){
-    if(window.form == 0) {
-        window.form = 1;
-        var matiere;
-        var champNote;
+function ajouter(){
+    var formulaire = document.getElementsByTagName("input");
+    var val = formulaire[1].value;
+    var matiere = formulaire[0].value;
+    if((parseFloat(val)).toString() == val && val != "") {
+        note = parseFloat(val);
 
-        do{
-            matiere = prompt("Veuillez entrer la matière. ");
-        }while (matiere == "" );
-        if(matiere != null){
-            do{
-                champNote = prompt("Veuillez entrer la note. ");
-            }while(parseFloat(champNote).toString() != champNote || champNote=="" );
-            if(champNote != null){
-                note = parseFloat(champNote);
+        if (window.vide == 0) {
+            var tableau;
+            tableau = document.getElementById("tableau");
+            var moyenne = document.getElementById("moyenne");
+            // alert(moyenne);
+            var nbr = tableau.childNodes.length;
+            var ligne = document.createElement("tr");
+            ligne.className = "info";
+            ligne.id = "element" + nbr;
+            ligne.innerHTML = "<td class = 'matiere'>" +
+                matiere + " </td> <td class = 'note'>" + note + " </td> <td class='action' id = 'map" + nbr +
+                "'> <div> <span class ='icon-pencil Edit' style='-webkit-transform:scale(1.5);'></span> <span class='icon-remove Suppression pull-right'style='-webkit-transform:scale(1.5);'></span> " +
+                "</div> </td>";
 
-                if (window.vide == 0) {
-                    var tableau;
-                    tableau = document.getElementById("tableau");
-                    var moyenne = document.getElementById("moyenne");
-                    // alert(moyenne);
-                    var nbr = tableau.childNodes.length;
-                    var ligne = document.createElement("tr");
-                    ligne.id = "element" + nbr;
-                    ligne.className = "info";
-                    ligne.innerHTML = "<td class = 'matiere'>" +
-                        matiere + " </td> <td class = 'note'>" + note + " </td> <td id = 'map" + nbr +"' class='action'> "+
-                        " <div> <span class ='icon-pencil Edit' style='-webkit-transform:scale(1.5);'></span> <span class='icon-remove Suppression pull-right'style='-webkit-transform:scale(1.5);'></span> " +
-                        "</div> </td>";
+            moyenne.parentNode.insertBefore(ligne, moyenne);
+            actualiseMoyenne();
+            addEvent();
+            var add = document.getElementById("ajouter");
+            add.remove();
+        } else {
+            var tableau;
+            var moyenne = document.createElement("tr");
+            moyenne.id = "moyenne";
+            moyenne.className = "warning";
+            moyenne.innerHTML = '<td class = "matiere" colspan="2">MOYENNE </td> <td id = "moy">12 </td>';
+            tableau = document.getElementsByTagName("tbody")[0];
+            tableau.appendChild(moyenne);
+            var nbr = 1;
+            var ligne = document.createElement("tr");
+            ligne.className = "info";
+            ligne.id = "element" + nbr;
+            ligne.innerHTML = "<td class = 'matiere'>" + matiere + " </td> " +
+                "<td class = 'note'>" + note + " </td> " +
+                "<td class='action' id = 'map" + nbr + "'> <div> <span class ='icon-pencil Edit'style='-webkit-transform:scale(1.5);'></span> <span class='icon-remove Suppression pull-right'style='-webkit-transform:scale(1.5);'></span> " +
+                "</div></td>";
 
-                    moyenne.parentNode.insertBefore(ligne, moyenne);
-                    actualiseMoyenne();
-                    addEvent();
-
-                } else {
-                    var tableau;
-                    var moyenne = document.createElement("tr");
-                    moyenne.id = "moyenne";
-                    moyenne.className = "warning";
-                    moyenne.innerHTML = '<td class = "matiere" colspan="2">MOYENNE </td> <td id = "moy">12 </td>';
-                    tableau = document.getElementsByTagName("tbody")[0];
-                    tableau.appendChild(moyenne);
-                    var nbr = 1;
-                    var ligne = document.createElement("tr");
-                    ligne.className = "info";
-                    ligne.id = "element" + nbr;
-                    ligne.innerHTML = "<td class = 'matiere'>" + matiere + " </td> " +
-                        "<td class = 'note'>" + note + " </td> " +
-                        "<td class='action' id = 'map" + nbr + "'> <div> <span class ='icon-pencil Edit'style='-webkit-transform:scale(1.5);'></span> <span class='icon-remove Suppression pull-right'style='-webkit-transform:scale(1.5);'></span> " +
-                        "</div></td>";
-
-                    moyenne.parentNode.insertBefore(ligne, moyenne);
-                    actualiseMoyenne();
-                    addEvent();
-
-                    window.vide = 0;
-                }
-                window.form = 0;
-            }else {
-                window.form = 0;
-
-            }
-        }else {
-            window.form = 0;
-
+            moyenne.parentNode.insertBefore(ligne, moyenne);
+            actualiseMoyenne();
+            addEvent();
+            var add = document.getElementById("ajouter");
+            add.remove();
+            window.vide = 0;
         }
-
-
-
+        window.form = 0;
+    }else{
+        alert("Veuillez entrer une note correcte!!");
+        formulaire[1].value = "";
     }
 
 }
@@ -222,7 +191,7 @@ function addEvent(){
     t = (document.getElementsByClassName("Edit"));
     for(var i = 0; i< t.length;i++){
         t[i].addEventListener("click",function(e){
-            modifier(e.target);
+            modifie(e.target);
             e.preventDefault;
         });
     }
