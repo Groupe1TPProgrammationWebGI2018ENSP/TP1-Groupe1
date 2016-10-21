@@ -1,0 +1,22 @@
+@font-face {
+    font-family: finalnew;
+    src: url("../fonts/Finalnew.ttf");
+}
+
+@font-face {
+    font-family: Mkxtitle;
+    src: url("../fonts/mkx.ttf");
+}
+
+th {
+    font-family: finalnew;
+}
+
+td {
+    font-family: airways;
+}
+
+h1, h4 {
+    font-family: finalnew;
+}
+

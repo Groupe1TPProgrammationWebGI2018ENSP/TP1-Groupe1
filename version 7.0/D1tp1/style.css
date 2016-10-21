@@ -1,0 +1,19 @@
+hr{
+    background-color:blue;
+    height:2px;
+}
+
+#bloc1{
+    background-color: black;
+    color: white;
+    width: 50%;
+    position:relative;
+    left:25%;
+}
+.green{
+    background-color:green;
+}
+.red{
+    background-color:red;
+}
+

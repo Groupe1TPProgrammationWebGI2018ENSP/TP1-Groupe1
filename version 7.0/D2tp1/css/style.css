@@ -1,0 +1,32 @@
+
+th {
+    color: #0e0e0e;
+}
+
+.ajoutmatiere {
+    float: left;
+    margin: 30px;
+    -webkit-transform: scale(1.5);
+}
+
+#body {
+    margin: auto;
+    max-width: 50%;
+}
+
+.action {
+    width: 100px;
+}
+
+hr {
+    background-color: blue;
+    height: 2px;
+}
+
+.Edit, .Suppression {
+    -webkit-transform: scale(1.5);
+}
+
+#moyenne {
+    font-weight: bold;
+}
